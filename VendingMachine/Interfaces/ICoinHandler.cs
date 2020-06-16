@@ -7,7 +7,7 @@ namespace VendingMachine.Interfaces
 {
     public interface ICoinHandler
     {
-        List<Coin> AcceptCoins(Dictionary<decimal, decimal> potentialCoins);
+        List<Coin> AcceptCoins(List<KeyValuePair<decimal, decimal>> potentialCoins);
         void ReturnCoins(List<Coin> coins);
         List<Coin> MakeChange(decimal costPrice, List<Coin> tender);
 

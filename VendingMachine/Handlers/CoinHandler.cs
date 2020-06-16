@@ -11,13 +11,13 @@ namespace VendingMachine.Handlers
 {
     public class CoinHandler : ICoinHandler
     {
-        private CoinConverter _coinConverter;
+        private ICoinConverter _coinConverter;
 
-        public CoinHandler(CoinConverter coinConverter)
+        public CoinHandler(ICoinConverter coinConverter)
         {
             _coinConverter = coinConverter;
         }
-        public List<Coin> AcceptCoins(Dictionary<decimal, decimal> potentialCoins)
+        public List<Coin> AcceptCoins(List<KeyValuePair<decimal, decimal>> potentialCoins)
         {
             var acceptedCoins = new List<Coin>();
             foreach (var item in potentialCoins)

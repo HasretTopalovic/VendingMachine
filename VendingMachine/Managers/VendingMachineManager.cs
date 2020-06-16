@@ -13,7 +13,7 @@ namespace VendingMachine.Managers
         private IProductHandler _productHandler;
 
         public List<Product> Products { get; private set; }
-        public List<Coin> Tender { get; set; }
+        public List<Coin> Tender { get; private set; }
         public int ButtonCounter { get; set; } = 0;
         public List<Coin> ChangeInMachine { get; private set; }
 
@@ -22,12 +22,17 @@ namespace VendingMachine.Managers
             _coinHandler = coinHandler;
             _productHandler = productHandler;
         }
-        public void StockMachine(List<Product> products)
+        public void StockProductsInMachine(List<Product> products)
         {
             Products = products;
         }
 
-        public void AcceptCurrency(Dictionary<decimal, decimal> coins)
+        public void StockChangeInMachine(List<Coin> change)
+        {
+            ChangeInMachine = change;
+        }
+
+        public void AcceptCurrency(List<KeyValuePair<decimal,decimal>> coins)
         {
             var filteredCoins = _coinHandler.AcceptCoins(coins);
             Tender = filteredCoins.Where(a => a.IsValid == true).ToList();

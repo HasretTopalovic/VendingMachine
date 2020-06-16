@@ -9,7 +9,7 @@ namespace VendingMachine.Converters
 {
     public class CoinConverter : ICoinConverter
     {
-        public List<Coin> AvailableTender;
+        public List<Coin> AvailableTender { get; set; }
         public Coin MeasureCoin(decimal weight, decimal width)
         {
             decimal value = 0m;
@@ -68,7 +68,7 @@ namespace VendingMachine.Converters
 
         public List<Coin> CalculateChange(List<Coin> coins, decimal amount)
         {
-            if (amount == 0) return null;
+            if (amount == 0) return new List<Coin>();
 
             var result = new List<Coin>();
             var counter = 0;

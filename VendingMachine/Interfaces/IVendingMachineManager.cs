@@ -7,7 +7,8 @@ namespace VendingMachine.Interfaces
 {
     public interface IVendingMachineManager
     {
-        void StockMachine(List<Product> products);
+        void StockProductsInMachine(List<Product> products);
+        void StockChangeInMachine(List<Coin> change);
         string MakeSelection(Product product);
     }
 }
